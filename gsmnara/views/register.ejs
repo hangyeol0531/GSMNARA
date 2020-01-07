@@ -13,15 +13,30 @@
         <script>
             function send_data(){
                 console.log("send_data를 접속하셨습니다.")
-                var student_id = document.getElementById("student_id").value;
-                var name = document.getElementById("student_id").value;
-                var discordid =  document.getElementById("student_id").value;
-                var password = document.getElementById("password").value;
-                var RePassWord = document.getElementById("RePassWord").value;
-
-                if(student_id == null || name == null || discordid == null || password == null || RePassWord == null){
+                var student_id = null;
+                var name =null;
+                var discordid = null;
+                var password =null;
+                var RePassWord = null;
+                student_id = document.getElementById("student_id").value;
+                name = document.getElementById("name").value;
+                discordid =  document.getElementById("discordid").value;
+                password = document.getElementById("password").value;
+                RePassWord = document.getElementById("RePassWord").value;
+                if(student_id != "" && name != "" && discordid != "" && password != "" && RePassWord != ""){
                     if(password == RePassWord){
-                        
+                       if(password.length >= 8){
+                            if(Number(student_id) >= 1101 && Number(student_id) < 3422){
+                                let obj = {"student_id" : student_id, "name":name, "discorid":discordid, "password" :password}
+                                obj = JSON.stringify(obj)
+                                var form = document.getElementById("getinformation")
+                                form.submit(obj);
+                            }else{
+                                alert("학번을 제대로 입력해주세요.");
+                            }
+                       }else{
+                            alert("비밀번호가 8글자 이내입니다.")
+                       }
                     }else{
                         alert("비밀번호가 일치하지 않습니다.");
                     }
@@ -32,18 +47,20 @@
         </script>
         <div class = "rounded">
             <div class = "titlename">Register</div>
-            <!-- <div class = "rightarrow" onclick="send_data();"></div> -->
-            <button class = "rightarrow"  onclick="<script>send_data();</script>"></button>
+            <form action="http://localhost:3000/getinformation", method="POST", id = "getinformation">
+                <div class = "rightarrow" onclick="send_data();"></div>
+            </form>
+            <!-- <button class = "rightarrow" onclick="send_data();"></button> -->
             <a href="http://localhost:3000"><div class ="arrow"></div></a>
             <div class = "picture">
                 <button class = "picture_save">사진 저장</button>
             </div>
             <div class = "inputmodeum">
-                <input placeholder = "학번ex)2116" type="text" class = "idtext" name ="student_id"><br>
-                <input placeholder = "이름" type="text" class = "idtext" name = "name"><br>
-                <input placeholder = "디스코드 ID" type="text" class = "idtext" name = "discordid"><br>
-                <input placeholder = "PassWord" type="password" class = "idtext" name = "password"><br>
-                <input placeholder = "RePassWord" type="password" class = "idtext" name ="RePassWordz">
+                <input placeholder = "학번ex)2116" type="text" class = "idtext" id ="student_id"><br>
+                <input placeholder = "이름" type="text" class = "idtext" id = "name"><br>
+                <input placeholder = "디스코드 ID" type="text" class = "idtext" id = "discordid"><br>
+                <input placeholder = "PassWord" type="password" class = "idtext" id = "password"><br>
+                <input placeholder = "RePassWord" type="password" class = "idtext" id ="RePassWord">
             </div>
         </div>
         <div class = "twosquare"></div>
