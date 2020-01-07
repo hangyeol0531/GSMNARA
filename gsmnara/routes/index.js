@@ -10,5 +10,11 @@ router.get('/', function(req, res) {
 router.get('/register', function(req, res){
   console.log("회원가입 창 접속");
   res.render('register')
+  
+})
+
+router.get('/main', function(req, res){
+  console.log("메인 창 접속");
+  res.render('main')
 })
 module.exports = router;

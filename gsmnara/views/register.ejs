@@ -7,18 +7,43 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="./stylesheets/register.css" type="text/css">          
         <title>Register</title>
+
     </head>
     <body>
+        <script>
+            function send_data(){
+                console.log("send_data를 접속하셨습니다.")
+                var student_id = document.getElementById("student_id").value;
+                var name = document.getElementById("student_id").value;
+                var discordid =  document.getElementById("student_id").value;
+                var password = document.getElementById("password").value;
+                var RePassWord = document.getElementById("RePassWord").value;
+
+                if(student_id == null || name == null || discordid == null || password == null || RePassWord == null){
+                    if(password == RePassWord){
+                        
+                    }else{
+                        alert("비밀번호가 일치하지 않습니다.");
+                    }
+                }else{
+                    alert("값을 모두 입력해주세요.");
+                }
+            }
+        </script>
         <div class = "rounded">
             <div class = "titlename">Register</div>
-            <a href="http://localhost:3000"><div class = "arrow"></div></a>
+            <!-- <div class = "rightarrow" onclick="send_data();"></div> -->
+            <button class = "rightarrow"  onclick="<script>send_data();</script>"></button>
+            <a href="http://localhost:3000"><div class ="arrow"></div></a>
+            <div class = "picture">
+                <button class = "picture_save">사진 저장</button>
+            </div>
             <div class = "inputmodeum">
-                <input placeholder = "학번ex)2116" type="text" class = "idtext"><br>
-                <input placeholder = "이름" type="text" class = "idtext"><br>
-                <input placeholder = "디스코드 ID" type="text" class = "idtext"><br>
-                <input placeholder = "학번ex)2116" type="text" class = "idtext"><br>
-                <input placeholder = "PassWord" type="password" class = "idtext"><br>
-                <input placeholder = "RePassWord" type="password" class = "idtext">
+                <input placeholder = "학번ex)2116" type="text" class = "idtext" name ="student_id"><br>
+                <input placeholder = "이름" type="text" class = "idtext" name = "name"><br>
+                <input placeholder = "디스코드 ID" type="text" class = "idtext" name = "discordid"><br>
+                <input placeholder = "PassWord" type="password" class = "idtext" name = "password"><br>
+                <input placeholder = "RePassWord" type="password" class = "idtext" name ="RePassWordz">
             </div>
         </div>
         <div class = "twosquare"></div>

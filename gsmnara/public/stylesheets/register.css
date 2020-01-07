@@ -54,13 +54,47 @@ body{
        left: 3em;
    }
    
+   .rightarrow{
+        background-image: url("../images/arrowright.png");
+       width:40px;
+       height:40px;
+       z-index:5;
+       background-size: cover;
+       position: fixed;
+       top: 2em;
+       right: 3em;
+   }
+
    .inputmodeum{
     position:fixed;
     right: 10em;
+    top: 7em;
    }
 
+   .picture{
+    position:fixed;
+    background-image: url("../images/whohuman.png");
+    background-size: cover;
+    width : 220px;
+    height : 220px; 
+    left: 200px;
+    top: 150px;
+   }
+
+   .picture_save{
+        font-family: Baeminjua;
+        margin-top: 260px;
+        margin-left: 30px;
+        width: 160px;
+        height : 40px;
+        font-size: 20px;
+        background-color: #7DC0C2;
+        color: white;
+        border:none;
+    }
+
    input[type = text] {
-    margin-top: 40px;
+    margin-top: 30px;
     width: 7cm;
     height: 30px;
     border: none;
