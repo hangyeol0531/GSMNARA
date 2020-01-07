@@ -1,0 +1,98 @@
+@font-face { 
+    font-family: "Baeminjua";
+     src:url("../fonts/Baeminjua.TTF")
+ }
+
+body{
+     background-color: #7DC0C2;
+     margin: 0;
+}
+.twosquare{
+ background-color: #A7D5D6;
+ width: 100vw;
+ height: 35vh;
+ position: fixed;
+ bottom: 0px;
+ z-index:1;
+}
+.discord{
+ background-image : url("../images/discord.png");
+ width : 80px;
+ height: 80px;;
+ background-size: cover;
+ position: fixed;
+ bottom: 0px;
+ z-index : 2;
+}
+.discordid{
+ color : black;
+ font-size : 0.8cm;
+ font-style: bold;
+ position: fixed;
+ bottom: 25px;
+ left:80px;
+ font-family: Baeminjua;
+}
+.rounded{
+ position: absolute; 
+ left: 50%; 
+ transform: translateX(-50%);
+ top: 10%;
+ background-color : white;
+ height: 581px; width : 551px;
+ border-radius: 30px;
+ z-index: 3;
+ box-shadow: 3px 4px 10px 1px;
+}
+
+.titlename{
+ position: relative;
+ font-family: Baeminjua;
+ font-size : 5em;
+ left: 15%;
+ top : 10%;
+}
+
+.idtext{
+ width : 200px;
+ height: 30px;
+}
+
+.manyform{
+    text-align:center;
+     margin-top: 23%;
+}
+
+.submitbtn{
+     margin-top: 30px;
+     width: 200px;
+     height: 70px;
+     background-color: #DCC7F4;
+     font-size : 2em;
+     font-family: Baeminjua;
+     border : 0;
+     outline : 0;
+     border-radius: 1ex;
+}
+
+.nohuman{
+    margin-top: 30px;
+     color:#616262;
+     font-family : Baeminjua;
+     font-size: 20px;
+}
+input[type = text] {
+    width: 7cm;
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid #000000;
+}
+
+input[type = password] {
+     width: 7cm;
+    height: 30px;
+    margin-top: 50px;
+    border:none;
+    border-bottom: 2px solid #000000;
+}
+

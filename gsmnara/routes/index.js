@@ -7,4 +7,8 @@ router.get('/', function(req, res) {
   res.render('login');
 });
 
+router.get('/register', function(req, res){
+  console.log("회원가입 창 접속");
+  res.render('register')
+})
 module.exports = router;
