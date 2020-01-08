@@ -55,7 +55,7 @@ body{
    }
    
    .rightarrow{
-        background-image: url("../images/arrowright.png");
+        font-family: Baeminjua;
        width:40px;
        height:40px;
        z-index:5;
@@ -63,6 +63,8 @@ body{
        position: fixed;
        top: 2em;
        right: 3em;
+       background-image:url(../images/arrowright.png) ;
+       background-color: black; border: #000000 0px solid
    }
 
    .inputmodeum{
