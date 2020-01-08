@@ -36,20 +36,29 @@ router.get('/register', function(req, res){
 
 })
 
-router.get('/main', function(req, res){
+router.post('/main', function(req, res){
+  console.log("/main 들어갔어요");
   var student_id = req.body.student_id;
-  var password = req.body.name;
-  
+  var password = req.body.password;
+  var crytopassword = crypto.createHash('sha512').update(password).digest('base64');
+  console.log(student_id);
+  console.log(password);
+  console.log(crytopassword);
   if(student_id != "" &&  password != ""){
-    db.query(`SELECT name FROM user_information WHERE student_code = ${student_id}`, function(err, docs){
+    db.query(`SELECT password FROM user_information WHERE student_code = ${student_id}`, function(err, docs){
       if(err){
         throw err;
       }
-    });
+      if(docs[0].password == crytopassword){
+        console.log(student_id + "님 로그인 성공!");
+        res.status(401).render('main')
+      }else{
+        res.status(401).send("<script>alert('입력한 정보가 올바르지 않습니다. ');window.location = '/'</script>")
+      }
+    }); 
   }else{
     res.status(401).send("<script>alert('값을 모두 입력해주세요! ');window.location = '/'</script>")
   }
-  res.render('main')
 })
 
 router.post('/getinformation', function(req, res){
@@ -61,10 +70,10 @@ router.post('/getinformation', function(req, res){
   var repassword = req.body.RePassWord;
 
   console.log(student_id);
-  console.log(name)
-  console.log(discrodid)
-  console.log(password)
-  console.log(repassword)
+  console.log(name);
+  console.log(discrodid);
+  console.log(password);
+  console.log(repassword);
   if(student_id != "" && name != "" && discrodid != "" && password != "" && repassword != ""){
       if(password == repassword){
           if(password.length >= 3){ //회원 가입 번호 길이
