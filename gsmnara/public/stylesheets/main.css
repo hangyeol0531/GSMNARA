@@ -1,0 +1,9 @@
+@font-face { 
+    font-family: "Baeminjua";
+     src:url("../fonts/Baeminjua.TTF")
+ }
+
+body{
+     background-color: #7DC0C2;
+     margin: 0;
+}

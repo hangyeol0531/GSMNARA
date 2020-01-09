@@ -3,6 +3,18 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 const mysql = require('mysql');
 const crypto = require('crypto'); 
+var multer = require("multer");
+// var upload = multer({dest : 'public/userimage/'})
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/userimage/');
+    },
+    filename: function (req, file, cb) {
+      cb(null, new Date().valueOf()+file.originalname);
+    }
+  }),
+});
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended : true}));
@@ -46,14 +58,19 @@ router.post('/main', function(req, res){
   console.log(crytopassword);
   if(student_id != "" &&  password != ""){
     db.query(`SELECT password FROM user_information WHERE student_code = ${student_id}`, function(err, docs){
+      console.log("docs : ", docs);
       if(err){
         throw err;
       }
-      if(docs[0].password == crytopassword){
+      if(JSON.stringify(docs) == '[]'){
+        res.status(401).send("<script>alert('회원 정보를 찾을 수 없습니다. ');window.location = '/'</script>")
+      }
+      else if(docs[0].password == crytopassword){
         console.log(student_id + "님 로그인 성공!");
         res.status(401).render('main')
-      }else{
-        res.status(401).send("<script>alert('입력한 정보가 올바르지 않습니다. ');window.location = '/'</script>")
+      }
+      else{
+        res.status(401).send("<script>alert('잘못된 정보입력입니다. ');window.location = '/'</script>")
       }
     }); 
   }else{
@@ -61,14 +78,14 @@ router.post('/main', function(req, res){
   }
 })
 
-router.post('/getinformation', function(req, res){
+router.post('/getinformation', upload.single('userfile'), function(req, res){
   console.log("회원가입 정보삽입을 할게요.");
   var student_id = req.body.student_id;
   var name = req.body.name;
   var discrodid = req.body.discordid;
   var password = req.body.password;
   var repassword = req.body.RePassWord;
-
+  console.log(req.file);
   console.log(student_id);
   console.log(name);
   console.log(discrodid);
@@ -85,7 +102,7 @@ router.post('/getinformation', function(req, res){
                   }
                   console.log("docs :", docs);
                   if(JSON.stringify(docs) == '[]'){
-                    db.query(`INSERT INTO user_information (student_code, name, discord_id, password) VALUES(${student_id}, "${name}", "${discrodid}", "${crytopassword}")`, function(err, result, fields){
+                    db.query(`INSERT INTO user_information (student_code, name, discord_id, password, picture_url) VALUES(${student_id}, "${name}", "${discrodid}", "${crytopassword}", "${req.file.filename}")`, function(err, result, fields){
                       if(err){
                          throw err;
                       }

@@ -74,6 +74,13 @@ body{
    }
 
    .picture{
+    background-color:white;
+    border-color: black;
+    text-align:center;
+    margin:0 auto;
+    font-size:12px;
+    vertical-align:middle;
+    line-height:150px;
     position:fixed;
     background-image: url("../images/whohuman.png");
     background-size: cover;
@@ -86,9 +93,7 @@ body{
    .picture_save{
         font-family: Baeminjua;
         margin-top: 260px;
-        margin-left: 30px;
-        width: 160px;
-        height : 40px;
+        width: 250px;
         font-size: 20px;
         background-color: #7DC0C2;
         color: white;
