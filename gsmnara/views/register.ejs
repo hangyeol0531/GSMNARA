@@ -9,24 +9,33 @@
         <title>Register</title>
     </head>
     <body>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $("#imgInp").on('change', function(){
+                    readURL(this);
+                });
+            });
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                var reader = new FileReader();
+    
+                reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+    
+                  reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
+
         <div class = "rounded">
             <div class = "titlename">Register</div>
             <!-- <button class = "rightarrow" onclick="send_data();"></button> -->
             <a href="./"><div class ="arrow"></div></a>
-            <form action="/getinformation", method="POST", enctype="multipart/form-data">
-                <script>
-                    var picture = document.getElementById("picture");
-                    var inputimage = document.getElementById("inputimage");
-                    console.log(inputimage.url());
-                    if(inputimage.value() != Null){
-                        picture.style.background-imag = inputimage.url();
-                    }else{
-                        picture.style.background-Image = url("../images/whohuman.png");
-                    }
-                    </script>
-                <div class = "picture" id = "picture"> 
-                    <input type="file" id = "inputimage" class = "picture_save" accept="image/git,image/jpeg,image/png" name = "userfile"></input>
-                </div>    
+            <form id = "form1" action="/getinformation", method="POST", enctype="multipart/form-data">
+                <img class = "picture" id = "blah"/>
+                    <input type="file" id = "imgInp" class = "picture_save" accept="image/git,image/jpeg,image/png" name = "userfile"></input>    
                 <input type = "submit" class = "rightarrow" style ="background-color: transparent;", value="">
                 <div class = "inputmodeum">
                     <input placeholder = "학번ex)2116" type="text" class = "idtext" name ="student_id"><br>
