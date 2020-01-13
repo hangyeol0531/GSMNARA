@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 const mysql = require('mysql');
 const crypto = require('crypto'); 
 var multer = require("multer");
+var cookieParser = require("cookie-parser");
+
 // var upload = multer({dest : 'public/userimage/'})
 const upload = multer({
   storage: multer.diskStorage({
@@ -18,6 +20,7 @@ const upload = multer({
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended : true}));
+router.use(cookieParser());
 
 var db = mysql.createConnection({
   host: "localhost",
@@ -39,6 +42,7 @@ db.connect((error) =>{
 /* GET home page. */
 router.get('/', function(req, res) {
   console.log("유저 접속");
+  res.clearCookie(req.headers.cookie);
   res.render('login');
 });
 
@@ -47,6 +51,12 @@ router.get('/register', function(req, res){
   res.render('register')
 
 })
+
+router.get('/main', function(req, res){
+  console.log("main get 방식");
+  cookiecheck(req, res);
+  res.render("main");
+});
 
 router.post('/main', function(req, res){
   console.log("/main 들어갔어요");
@@ -67,7 +77,11 @@ router.post('/main', function(req, res){
       }
       else if(docs[0].password == crytopassword){
         console.log(student_id + "님 로그인 성공!");
-        res.status(401).render('main')
+        // 쿠키 할곳
+        const student_id_cookie = {"student_id" : student_id};
+        res.cookie("student_id", student_id_cookie);
+        console.log("쿠키 생성:" , student_id_cookie);
+        res.status(401).render('main');
       }
       else{
         res.status(401).send("<script>alert('잘못된 정보입력입니다. ');window.location = '/'</script>")
@@ -127,5 +141,13 @@ router.post('/getinformation', upload.single('userfile'), function(req, res){
     res.status(401).send("<script>alert('값을 모두 입력해주세요!');window.location = '/register'</script>")
   }         
 });
+
+function cookiecheck(req, res){
+  if(!(req.headers.cookie)){
+  console.log('no cookie')
+  res.render('login');
+  }
+}
+
 
 module.exports = router;

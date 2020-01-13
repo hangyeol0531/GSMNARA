@@ -3,7 +3,88 @@
      src:url("../fonts/Baeminjua.TTF")
  }
 
-body{
-     background-color: #7DC0C2;
-     margin: 0;
+ body{
+    background-color: #7DC0C2;
+    margin: 0;
+}
+
+.titlename{
+    position: relative;
+    font-family: Baeminjua;
+    font-size : 2em;
+    left: 2%;
+    top : 2%;
+   }
+
+.rounded{
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%);
+    top: 6%;
+    background-color : white;
+    height: 1000px; width : 1300px;
+    border-radius: 30px;
+    z-index:3;
+    box-shadow: 3px 4px 10px 1px;
+   }
+
+.itemsellpackage{
+    position: absolute;
+    top: -5px;
+    margin-left: -1000px;
+}
+
+.sellwrite{
+    position: relative;
+    font-family: Baeminjua;
+    left: 70px;
+    font-size: 25px;
+    bottom: 33px;
+}
+
+.chatpackage{
+    position: relative;
+    top:9%;
+    left:82%;
+}
+
+.talkwrite{
+    position: relative;
+    font-family: Baeminjua;
+    font-size: 25px;
+    left: 70px;
+    bottom: 40px;
+}
+
+.searchbar{
+    position: absolute;
+    left: 24%;
+    top: 13%;
+    height: 40px;
+    width: 700px;
+    border: 3px solid #27B5EB;
+    background: #ffffff;
+}
+
+input::placeholder {
+    color: #a8a8a8a8;
+}
+
+input{
+    font-size: 16px;
+    width: 325px;
+    padding: 10px;
+    border : 0px;
+    outline: none;
+    float: left;
+}
+
+button{
+    width : 50px;
+    height: 100%;
+    border:0px;
+    background: #1b5ac2;
+    outline:none;
+    float: right;
+    color:#ffffff;
 }
