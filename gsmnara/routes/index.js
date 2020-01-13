@@ -49,7 +49,6 @@ router.get('/', function(req, res) {
 router.get('/register', function(req, res){
   console.log("회원가입 창 접속");
   res.render('register')
-
 })
 
 router.get('/main', function(req, res){
@@ -67,7 +66,7 @@ router.post('/main', function(req, res){
   console.log(password);
   console.log(crytopassword);
   if(student_id != "" &&  password != ""){
-    db.query(`SELECT password FROM user_information WHERE student_code = ${student_id}`, function(err, docs){
+    db.query(`SELECT * FROM user_information WHERE student_code = ${student_id}`, function(err, docs){
       console.log("docs : ", docs);
       if(err){
         throw err;
@@ -78,10 +77,15 @@ router.post('/main', function(req, res){
       else if(docs[0].password == crytopassword){
         console.log(student_id + "님 로그인 성공!");
         // 쿠키 할곳
+        console.log(docs[0]);
+        const username = docs[0].name
         const student_id_cookie = {"student_id" : student_id};
         res.cookie("student_id", student_id_cookie);
         console.log("쿠키 생성:" , student_id_cookie);
-        res.status(401).render('main');
+        console.log(username);
+        res.status(401).render('main',{
+          "name" : username
+        });
       }
       else{
         res.status(401).send("<script>alert('잘못된 정보입력입니다. ');window.location = '/'</script>")
@@ -140,6 +144,11 @@ router.post('/getinformation', upload.single('userfile'), function(req, res){
   }else{
     res.status(401).send("<script>alert('값을 모두 입력해주세요!');window.location = '/register'</script>")
   }         
+});
+
+router.get("/additem", function(req, res){
+  console.log("additem접속")
+  res.render('additem');
 });
 
 function cookiecheck(req, res){

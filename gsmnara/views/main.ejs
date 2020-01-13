@@ -11,7 +11,7 @@
     <div class = "rounded">
         <div class = "titlename"><font color = "#3AAEC1">GSM</font><font color = #2DC98B;> NARA</font></div>
         <div class = "outpage">
-            <div class = "namehello"> 님 안녕하세요!!</div>
+            <div class = "namehello"> <%= name %>님 안녕하세요!!</div>
             <a href="/"><div class = "logout">로그아웃</div></a>
             <div class = "mypage">마이페이지</div>
         </div>    
@@ -24,11 +24,11 @@
                 <img src="./images/chat.png" width="50" height="50"/>
                 <div class = "talkwrite">GSM Talk
             </div>
-                
-            <div class = "itemsellpackage">
-                <img src="./images/gift.png" width="50" height="50"/>
-                <div class = "sellwrite">물건판매하기</div>
-            </div>
-               
+            <a href="/additem" target="_blank">
+                <div class = "itemsellpackage">
+                    <img src="./images/gift.png" width="50" height="50"/>
+                    <div class = "sellwrite">물건판매하기</div>
+                </div>
+            </a>               
 </body>
 </html>
