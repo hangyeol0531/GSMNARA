@@ -53,8 +53,21 @@ router.get('/register', function(req, res){
 
 router.get('/main', function(req, res){
   console.log("main get 방식");
-  cookiecheck(req, res);
-  res.render("main");
+  const student_id = req.cookies.student_id.student_id;
+  db.query(`SELECT name FROM user_information WHERE student_code = ${student_id}`, function(err, docs){
+    console.log("docs : ", docs);
+      console.log(student_id + "님 로그인 성공!");
+      // 쿠키 할곳
+      console.log(docs[0]);
+      const username = docs[0].name
+      const student_id_cookie = {"student_id" : student_id};
+      res.cookie("student_id", student_id_cookie);
+      console.log("쿠키 생성:" , student_id_cookie);
+      console.log(username);
+      res.status(401).render('main',{
+        "name" : username
+      });
+  }); 
 });
 
 router.post('/main', function(req, res){
@@ -151,9 +164,32 @@ router.get("/additem", function(req, res){
   res.render('additem');
 });
 
+router.get("/mypage", function(req, res){
+  console.log("mypage접속");
+  console.log(req.cookies.student_id.student_id);
+  const student_id = req.cookies.student_id.student_id;
+  db.query(`SELECT * FROM user_information WHERE student_code = ${student_id}`, function(err, docs){
+    console.log("docs : ", docs);
+      console.log(student_id + "님 로그인 성공!");
+      // 쿠키 할곳
+      console.log(docs[0]);
+      const username = docs[0].name
+      const student_id_cookie = {"student_id" : student_id};
+      res.cookie("student_id", student_id_cookie);
+      console.log("쿠키 생성:" , student_id_cookie);
+      console.log(username);
+      res.status(401).render('mypage',{
+        "name" : username,
+        "student_id" : student_id,
+        "discord_id" : docs[0].discord_id,
+        "picture_url" : docs[0].picture_url
+      });
+  }); 
+});
+
 function cookiecheck(req, res){
-  if(!(req.headers.cookie)){
-  console.log('no cookie')
+  if(!(req.body.student_id)){
+  console.log('no cookie');
   res.render('login');
   }
 }
