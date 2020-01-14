@@ -57,7 +57,7 @@
                 </div>
             </a>    
             
-            <form id = "form1" action="./mypage", method="POST", enctype="multipart/form-data">
+            <form id = "form1" action="./mypage/changeinformation", method="POST", enctype="multipart/form-data">
                 <img class = "picture" id = "blah"/>
                 <script>
                     let image = document.getElementById("blah")
@@ -69,14 +69,15 @@
                     console.log(image_url);
                 </script>
                     <input type="file" id = "imgInp" class = "picture_save" accept="image/git,image/jpeg,image/png" name = "userfile"></input>    
-                <input type = "submit"  class = "submitbtn" , value="정보 수정">
+                    <input type = "submit"  class = "submitbtn" , value="정보 수정">
                 <div class = "inputmodeum">
                     <input placeholder = "학번ex)2116" value = <%= student_id %> type="text" class = "idtext" name ="student_id" ><br>
                     <input placeholder = "이름"  value = <%= name %> type="text" class = "idtext" name = "name"><br>
                     <input placeholder = "디스코드 ID"  value = <%= discord_id %> type="text" class = "idtext" name = "discordid"><br>
-                    <input placeholder = "PassWord" type="password" class = "idtext" name = "password"><br>
-                    <input placeholder = "RePassWord" type="password" class = "idtext" name ="RePassWord">
+                    <input placeholder = "NewPassWord" type="password" class = "idtext" name = "newpassword"><br>
+                    <input placeholder = "ReNewPassWord" type="password" class = "idtext" name ="newrePassWord">
+                    <input placeholder = "OriginalPassWord" type="password" class = "oridtext" name ="originalPassWord">
                 </div>    
             </form>
 </body>
-</html>
+</html> 

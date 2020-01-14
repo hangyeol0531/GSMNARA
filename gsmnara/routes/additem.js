@@ -37,18 +37,9 @@ db.connect((error) =>{
   }
 });
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  console.log("유저 접속");
-  res.clearCookie(req.headers.cookie);
-  res.render('login');
-});
+router.get("/", function(req, res){
+    console.log("additem접속")
+    res.render('additem');
+  });
 
-function cookiecheck(req, res){
-  if(!(req.body.student_id)){
-  console.log('no cookie');
-  res.render('login');
-  }
-}
-
-module.exports = router;
+  module.exports = router;

@@ -176,6 +176,19 @@ button{
     height: 30px;
    }
 
+   .oridtext{
+    position: absolute;
+    width: 7cm;
+    height: 30px;
+    border:none;
+    border-bottom: 2px solid orange;
+    width : 190px;
+    font-size: 20px;
+    height: 40px;
+    right : -240px;
+    top : 150px;
+   }
+
 
 .inputmodeum{
     position:fixed;
