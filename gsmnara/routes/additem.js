@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const crypto = require('crypto'); 
 var multer = require("multer");
 var cookieParser = require("cookie-parser");
-
+var coch = require('./index');
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
@@ -38,7 +38,8 @@ db.connect((error) =>{
 });
 
 router.get("/", function(req, res){
-    console.log("additem접속")
+    console.log("additem접속");
+    coch.cookiecheck(req,res);
     res.render('additem');
   });
 

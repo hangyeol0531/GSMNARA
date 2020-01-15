@@ -5,6 +5,7 @@ const mysql = require('mysql');
 const crypto = require('crypto'); 
 var multer = require("multer");
 var cookieParser = require("cookie-parser");
+var coch = require('./index');
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -39,6 +40,7 @@ db.connect((error) =>{
 
 
 router.get("/", function(req, res){
+   coch.cookiecheck(req,res);
     console.log("mypage접속");
     console.log(req.cookies.student_id.student_id);
     const student_id = req.cookies.student_id.student_id;

@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const crypto = require('crypto'); 
 var multer = require("multer");
 var cookieParser = require("cookie-parser");
-
+var coch = require('./index');
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
@@ -39,6 +39,7 @@ db.connect((error) =>{
 
 router.get('/', function(req, res){
     console.log("main get 방식");
+    coch.cookiecheck(req,res);
     const student_id = req.cookies.student_id.student_id;
     db.query(`SELECT name FROM user_information WHERE student_code = ${student_id}`, function(err, docs){
       console.log("docs : ", docs);
