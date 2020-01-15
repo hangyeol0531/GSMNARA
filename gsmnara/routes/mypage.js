@@ -61,7 +61,7 @@ router.get("/", function(req, res){
     }); 
 });
 
-router.post('/changeinformation', function(req, res){
+router.post('/changeinformation',  upload.single('userfile'), function(req, res){
   console.log("changeinformation접속");
   let student_id = req.cookies.student_id.student_id;
   let student_name = req.body.name;
@@ -69,12 +69,49 @@ router.post('/changeinformation', function(req, res){
   let newpassword = req.body.newpassword;
   let newrepassword = req.body.newrePassWord;
   let originalpassword = req.body.originalPassWord;
-  console.log(student_id);
-  console.log(student_name);
-  console.log(discord_id);
-  console.log(newpassword);
-  console.log(newrepassword);
-  console.log(originalpassword);
-  res.status(401).send("<script>alert('정상적으로 수정되었습니다.');window.location = '/mypage'</script>")
+  
+  db.query(`SELECT * FROM user_information WHERE student_code = ${student_id}`, function(err, docs){
+    console.log("docs : ", docs);
+    var crytopassword = crypto.createHash('sha512').update(originalpassword).digest('base64');
+    if(docs[0].password == crytopassword){
+        db.query(`UPDATE user_information SET name = '${student_name}', discord_id = '${discord_id}' WHERE student_code = ${student_id}`, function(err, docs){
+          if(err){
+              throw err;
+          }
+          console.log("이름 아이디 수정");  
+          console.log(req.file);
+          if(req.file){
+            db.query(`UPDATE user_information SET picture_url = '${req.file.filename}' WHERE student_code = ${student_id}`, function(err, docs){
+              if(err){
+                  throw err;
+              }
+              console.log("사진 경로 변경");  
+          });
+          }
+          if(newpassword && newrepassword){
+            if(newpassword == newrepassword){
+              if(newpassword.length < 3){ //비밀번호 경로
+                res.status(401).send("<script>alert('비밀번호가 8글자 이내입니다.'); window.location = '/mypage'</script>")  
+              }
+              var newcrytopassword = crypto.createHash('sha512').update(newpassword).digest('base64');
+                db.query(`UPDATE user_information SET password = '${newcrytopassword}' WHERE student_code = ${student_id}`, function(err, docs){
+                  if(err){
+                      throw err;
+                  }
+                  console.log("비밀번호 변경");  
+                  res.status(401).send("<script>alert('정상적으로 수정되었습니다.');window.location = '/mypage'</script>")
+              });
+            }else{
+              res.status(401).send("<script>alert('새로운 비밀번호 정보가 올바르지 않습니다.'); window.location = '/mypage'</script>")  
+            }
+          }
+          else{
+            res.status(401).send("<script>alert('정상적으로 수정되었습니다.');window.location = '/mypage'</script>")
+          }
+      });
+    }else{
+      res.status(401).send("<script>alert('비밀번호가 올바르지 않습니다.');window.location = '/mypage'</script>")
+    }
+  });     
 });
-module.exports = router;
+module.exports = router;  
