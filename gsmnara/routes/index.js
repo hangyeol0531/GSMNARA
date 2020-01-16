@@ -45,7 +45,7 @@ router.get('/', function(req, res) {
 });
 
 function cookiecheck(req, res){
-  if(!(req.body.student_id)){
+  if(!(req.headers.cookie)){
   console.log('no cookie');
   res.render('./login');
   }

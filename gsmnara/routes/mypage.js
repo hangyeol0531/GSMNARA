@@ -40,7 +40,7 @@ db.connect((error) =>{
 
 
 router.get("/", function(req, res){
-   coch.cookiecheck(req,res);
+    coch.cookiecheck(req,res);
     console.log("mypage접속");
     console.log(req.cookies.student_id.student_id);
     const student_id = req.cookies.student_id.student_id;
