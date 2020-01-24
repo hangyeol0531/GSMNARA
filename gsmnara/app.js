@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
   console.log("error!");
 });
 
-// error handler
+// error handlers
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;

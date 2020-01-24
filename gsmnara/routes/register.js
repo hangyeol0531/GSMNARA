@@ -25,7 +25,7 @@ var db = mysql.createConnection({
   host: "localhost",
   database: "magonara",
   user: "root",
-  password: "0000"
+  password: "password"
 });
 
 db.connect((error) =>{
