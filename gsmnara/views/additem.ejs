@@ -8,6 +8,36 @@
     <title>물건판매하기</title>
 </head>
 <body>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $("#imgInp").on('change', function(){
+                    readURL(this);
+                });
+            });
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                var reader = new FileReader();
     
+                reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+    
+                  reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
+
+    <form >
+        <img class = "picture" id = "blah"/>
+        <input type="file" id = "imgInp" class = "picture_save" accept="image/git,image/jpeg,image/png" name = "userfile"></input>    
+    </form>
+
+    <div class = "inputmodeum">
+        <input placeholder = "물건 이름" type="text" class = "item_name" name ="item_name"><br>
+        <input placeholder = "카테고리" type="text" class = "item_kategorie" name ="item_kategorie"><br>
+        <input placeholder = "물건 가격" type="text" class = "item_price" name = "item_price" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"><br>
+        <input placeholder = "간단한 말" type="text" class = "simple_talk" name = "simple_talk"><br>
+    </div>    
 </body>
 </html>

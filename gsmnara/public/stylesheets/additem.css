@@ -7,3 +7,46 @@ body{
     background-color: #64C4DA;
     margin: 0;
 }
+
+.picture{
+    background-color:white;
+    border-color: black;
+    font-size:12px;
+    line-height:150px;
+    position:fixed;
+    background-size: cover;
+    width : 200px;
+    height : 200px; 
+    top: 30px;
+    left: 70px;
+   }
+
+   .picture_save{
+        font-family: Baeminjua;
+        margin-top: 130px;
+        margin-left: 310px;
+        width: 250px;
+        position:fixed;
+        font-size: 20px;
+        background-color: #5882FA;
+        color: white;
+        border:none;
+    }
+
+    .inputmodeum{
+        position:fixed;
+        left: 70px;
+        top: 15em;
+       }
+
+    input[type = text] {
+    margin-top: 35px;
+    height: 40px;
+    border: none;
+    font-size: 20px;
+    border-bottom: 2px solid #000000;
+    }
+
+    .item_name{
+        width: 13cm;
+    }
