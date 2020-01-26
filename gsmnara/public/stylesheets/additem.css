@@ -20,7 +20,6 @@ body{
     top: 30px;
     left: 70px;
    }
-
    .picture_save{
         font-family: Baeminjua;
         margin-top: 130px;
@@ -44,9 +43,32 @@ body{
     height: 40px;
     border: none;
     font-size: 20px;
-    border-bottom: 2px solid #000000;
     }
 
+    .kategorie_box{
+        float:left
+    }
+
+
+    select{
+        height: 40px;
+        border: none;
+        font-size: 20px;
+        left : 190px;    
+        position:fixed;  
+    }
+
+    textarea{
+        margin-top: 35px;
+        height: 40px;
+        border: none;
+        font-size: 20px;
+    }
     .item_name{
         width: 13cm;
+    }
+
+    #simple_talk{
+        width: 13cm;
+        height: 3cm;
     }

@@ -34,10 +34,20 @@
     </form>
 
     <div class = "inputmodeum">
-        <input placeholder = "물건 이름" type="text" class = "item_name" name ="item_name"><br>
-        <input placeholder = "카테고리" type="text" class = "item_kategorie" name ="item_kategorie"><br>
+        <input placeholder = "물건 이름(20자 이내)" type="text" class = "item_name" name ="item_name" maxlength="20"><br>
+        <!-- <input placeholder = "카테고리" type="text" class = "item_kategorie" name ="item_kategorie"><br> -->
+        <div class = "kategorie_box">
+            <h2>카테고리</h2>  
+        </div>
+        <select class = "item_kategorie" name ="item_kategorie">
+            <option value="book">서적</option>
+            <option value="clothes">의류</option>
+            <option value="ele">전자제품</option> 
+            <option value="etc">가타</option> 
+        </select><br>
+          
         <input placeholder = "물건 가격" type="text" class = "item_price" name = "item_price" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"><br>
-        <input placeholder = "간단한 말" type="text" class = "simple_talk" name = "simple_talk"><br>
+        <textarea placeholder = "간단한 말(40자 이내)" type="text" id = "simple_talk" name = "simple_talk" maxlength="40"></textarea><br>
     </div>    
 </body>
 </html>
