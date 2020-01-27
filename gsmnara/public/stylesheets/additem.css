@@ -45,6 +45,19 @@ body{
     font-size: 20px;
     }
 
+    input[type = submit] {
+        font-family: Baeminjua;
+        height: 80px;
+        width: 200px;
+        position:fixed;
+        bottom:30px;
+        left : 200px;
+        background-color: peru; border: #000000 0px solid;
+        border-radius: 10px;;
+        color:white;
+        font-size : 30px;
+    }
+
     .kategorie_box{
         float:left
     }
@@ -71,4 +84,22 @@ body{
     #simple_talk{
         width: 13cm;
         height: 3cm;
+    }
+
+    .item_kategorie{
+        margin-top :14px;
+    }
+
+    #item_price{
+        margin-top: 50px;
+        margin-left: -76px;
+    }
+    p{
+        font-size : 23px; 
+        font-family: Baeminjua;
+        color:purple
+    }
+
+    #ctct{
+        margin-top: 10px;
     }
