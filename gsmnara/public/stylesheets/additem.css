@@ -4,7 +4,7 @@
  }
  
 body{
-    background-color: #64C4DA;
+    background-color: #c0c0c0;
     margin: 0;
 }
 
@@ -97,7 +97,7 @@ body{
     p{
         font-size : 23px; 
         font-family: Baeminjua;
-        color:purple
+        color:black
     }
 
     #ctct{
