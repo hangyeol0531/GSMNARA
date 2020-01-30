@@ -11,7 +11,7 @@ var querystring = require('querystring');
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'public/userimage/');
+      cb(null, 'public/itemimage/');
     },
     filename: function (req, file, cb) {
       cb(null, new Date().valueOf()+file.originalname);
@@ -45,9 +45,23 @@ router.get("/", function(req, res){
     res.render('additem');
   });
 
-  module.exports = router;
 
-  router.get('./check', function(req, res){
-    console.log("아이템 등록 확인");
+  router.post('/check', upload.single('itemfile'), function(req, res){
+    console.log("아이템 등록 들어왔습니다.");
+    coch.cookiecheck(req, res);
+
+    let user_name = req.cookies.student_id.student_id;
+    let item_name = req.body.item_name;
+    let item_kategorie = req.body.item_kategorie;
+    let item_price = req.body.item_price;
+    let simple_talk = req.body.simple_talk;
     
+    console.log(user_name);
+    console.log(item_name);
+    console.log(item_kategorie);
+    console.log(item_price);
+    console.log(simple_talk);
+
   });
+
+  module.exports = router;

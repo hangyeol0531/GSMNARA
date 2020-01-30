@@ -22,15 +22,14 @@
                 reader.onload = function (e) {
                         $('#blah').attr('src', e.target.result);
                     }
-    
                   reader.readAsDataURL(input.files[0]);
                 }
             }
         </script>
 
-    <form action = "./additem/check" method="GET">
+    <form action = "./additem/check" method="POST", enctype="multipart/form-data">
         <img class = "picture" id = "blah"/>
-        <input type="file" id = "imgInp" class = "picture_save" accept="image/git,image/jpeg,image/png" name = "userfile"></input>    
+        <input type="file" id = "imgInp" class = "picture_save" accept="image/git,image/jpeg,image/png" name = "itemfile"></input>    
 
     <div class = "inputmodeum">
         <input placeholder = "물건 이름(20자 이내)" type="text" class = "item_name" name ="item_name" maxlength="20"><br>
@@ -40,19 +39,18 @@
                 <p>카테고리</p>  
             </div>
             <select class = "item_kategorie" name ="item_kategorie">
-                <option value="book">서적</option>
-                <option value="clothes">의류</option>
-                <option value="ele">전자제품</option> 
-                <option value="etc">기타</option> 
+                <option value="서적">서적</option>
+                <option value="의류">의류</option>
+                <option value="전자제품">전자제품</option> 
+                <option value="기타">기타</option> 
             </select><br><br>    
         </div>
           
         <input placeholder = "물건 가격" type="text" id = "item_price" name = "item_price" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"><br>
         <textarea placeholder = "간단한 말(40자 이내)" type="text" id = "simple_talk" name = "simple_talk" maxlength="40"></textarea><br>
     </div>   
-
-    <input type="submit" value="판매하기!">  
-    
+    <input type="submit" value="판매하기!">      
 </form>
+
 </body>
 </html>
