@@ -6,6 +6,7 @@ const crypto = require('crypto');
 var multer = require("multer");
 var cookieParser = require("cookie-parser");
 var coch = require('./index');
+var querystring = require('querystring');
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -45,3 +46,8 @@ router.get("/", function(req, res){
   });
 
   module.exports = router;
+
+  router.get('./check', function(req, res){
+    console.log("아이템 등록 확인");
+    
+  });
